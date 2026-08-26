@@ -1,3 +1,3 @@
 # NetScope
 
-> See what your network is really doing.
+> See what your network is really doing...

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetScope - History</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+
+<body>
+
+    <header class="header">
+        <div>
+            <h1>NetScope</h1>
+            <p>Diagnostic history</p>
+        </div>
+
+        <nav>
+            <a href="/">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <h2>Diagnostic History</h2>
+                <p>Previous NetScope diagnostic runs.</p>
+            </div>
+        </section>
+
+        {% if records %}
+
+            <section class="history-list">
+
+                {% for record in records %}
+
+                    <article class="history-card">
+
+                        <div class="history-header">
+                            <span class="history-id">
+                                #{{ record.id }}
+                            </span>
+
+                            <span class="overall-status {{ record.status.lower() }}">
+                                {{ record.status }}
+                            </span>
+
+                            <span class="history-time">
+                                {{ record.timestamp }}
+                            </span>
+                        </div>
+
+                        <details>
+                            <summary>View Results</summary>
+
+                            <pre>{{ record.results }}</pre>
+                        </details>
+
+                    </article>
+
+                {% endfor %}
+
+            </section>
+
+        {% else %}
+
+            <section class="status-panel">
+                <h2>No diagnostic history</h2>
+
+                <p>
+                    Run a diagnostic from the dashboard to create
+                    your first history record.
+                </p>
+            </section>
+
+        {% endif %}
+
+    </main>
+
+</body>
+</html>

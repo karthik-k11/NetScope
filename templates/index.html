@@ -8,16 +8,134 @@
 </head>
 
 <body>
-    <header>
-        <h1>NetScope</h1>
-        <p>See what your network is really doing.</p>
+    <header class="header">
+        <div>
+            <h1>NetScope</h1>
+            <p>See what your network is really doing.</p>
+        </div>
+
+        <nav>
+            <a href="/">Dashboard</a>
+            <a href="/history">History</a>
+        </nav>
     </header>
 
-    <main>
-        <section>
-            <h2>Network Dashboard</h2>
-            <p>Network diagnostics will appear here.</p>
+    <main class="container">
+
+        <section class="hero">
+            <div>
+                <h2>Network Dashboard</h2>
+                <p>Run a complete diagnostic of your current connection.</p>
+            </div>
+
+            <button id="runDiagnostics" class="primary-button">
+                Run Full Diagnostics
+            </button>
         </section>
+
+        <section class="system-card">
+            <h2>Local System</h2>
+
+            <div class="system-grid">
+                <div>
+                    <span>Hostname</span>
+                    <strong id="hostname">Loading...</strong>
+                </div>
+
+                <div>
+                    <span>Local IP</span>
+                    <strong id="localIp">Loading...</strong>
+                </div>
+
+                <div>
+                    <span>Operating System</span>
+                    <strong id="operatingSystem">Loading...</strong>
+                </div>
+            </div>
+        </section>
+
+        <section class="diagnostics-grid">
+
+            <div class="card" id="internetCard">
+                <div class="card-header">
+                    <h3>Internet Connectivity</h3>
+                    <span class="status" id="internetStatus">Not tested</span>
+                </div>
+
+                <p>Tests connectivity to a public DNS endpoint.</p>
+
+                <div class="result" id="internetResult">
+                    —
+                </div>
+            </div>
+
+            <div class="card" id="dnsCard">
+                <div class="card-header">
+                    <h3>DNS Resolution</h3>
+                    <span class="status" id="dnsStatus">Not tested</span>
+                </div>
+
+                <p>Resolves example.com and measures lookup time.</p>
+
+                <div class="result" id="dnsResult">
+                    —
+                </div>
+            </div>
+
+            <div class="card" id="tcpCard">
+                <div class="card-header">
+                    <h3>TCP Connection</h3>
+                    <span class="status" id="tcpStatus">Not tested</span>
+                </div>
+
+                <p>Tests TCP connectivity to example.com:443.</p>
+
+                <div class="result" id="tcpResult">
+                    —
+                </div>
+            </div>
+
+            <div class="card" id="httpCard">
+                <div class="card-header">
+                    <h3>HTTP Check</h3>
+                    <span class="status" id="httpStatus">Not tested</span>
+                </div>
+
+                <p>Checks HTTPS availability and response time.</p>
+
+                <div class="result" id="httpResult">
+                    —
+                </div>
+            </div>
+
+            <div class="card" id="pingCard">
+                <div class="card-header">
+                    <h3>Latency & Packet Loss</h3>
+                    <span class="status" id="pingStatus">Not tested</span>
+                </div>
+
+                <p>Measures reachability and packet loss to 8.8.8.8.</p>
+
+                <div class="result" id="pingResult">
+                    —
+                </div>
+            </div>
+
+        </section>
+
+        <section class="overall-card">
+            <div>
+                <h2>Overall Status</h2>
+                <p id="diagnosticTime">No diagnostic has been run.</p>
+            </div>
+
+            <span class="overall-status" id="overallStatus">
+                Not tested
+            </span>
+        </section>
+
+        <div id="errorMessage" class="error-message hidden"></div>
+
     </main>
 
     <script src="{{ url_for('static', path='script.js') }}"></script>

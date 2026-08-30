@@ -312,3 +312,71 @@ nav a {
         flex-wrap: wrap;
     }
 }
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #6b7280;
+}
+
+.input-row {
+    display: flex;
+    gap: 12px;
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+.input-row .port-input {
+    max-width: 110px;
+}
+
+.check-button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #374151;
+    color: #ffffff;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.check-button:hover {
+    opacity: 0.9;
+}
+
+.check-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+@media (max-width: 700px) {
+    .input-row {
+        flex-direction: column;
+    }
+
+    .input-row .port-input {
+        max-width: none;
+    }
+}

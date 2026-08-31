@@ -26,6 +26,12 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
 
+def parse_json(value):
+    return json.loads(value)
+
+
+templates.env.filters["from_json"] = parse_json
+
 initialize_database()
 
 
